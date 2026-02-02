@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港股智能分析系统 - 用户使用手册</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #0e1117;
+            --secondary-color: #262730;
+            --accent-color: #ff4b4b;
+            --text-color: #fafafa;
+            --bg-color: #ffffff;
+            --card-bg: #f0f2f6;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        h1, h2, h3 {
+            color: #0e1117;
+            border-bottom: 2px solid #f0f2f6;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .feature-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .mermaid {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>📈 港股智能分析与趋势预测系统 - 使用手册</h1>
+
+    <div class="container">
+        <!-- 1. 系统介绍 -->
+        <section class="card">
+            <h2>1. 系统介绍</h2>
+            <p>本系统是一个专为港股投资者打造的<strong>一站式智能分析平台</strong>。它集成了实时行情数据、专业技术指标分析、AI智能趋势解读以及机构基本面观点。无论你是技术派还是基本面派，都能在这里找到所需的决策支持工具。</p>
+            <p>系统支持<strong>中英双语</strong>界面与内容翻译，让跨语言投资变得零门槛。</p>
+        </section>
+
+        <!-- 2. 核心功能 -->
+        <section class="card">
+            <h2>2. 核心功能概览</h2>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span class="feature-title">🔍 智能搜索与添加</span>
+                    支持直接输入中文名称（如“腾讯”、“小米”）搜索港股，一键添加到观察列表，并自动保存。
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">🤖 AI 趋势深度解析</span>
+                    基于均线、布林带、MACD、RSI等多维度指标，自动生成通俗易懂的趋势研报和买卖建议。
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">🔮 机构观点与展望</span>
+                    聚合华尔街分析师评级、目标价预测，以及公司未来的营收/盈利增长预期。
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">👥 股东与大户追踪</span>
+                    深度挖掘前10大机构持仓、主要股东结构以及内部人士（高管）的近期交易记录。
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">💱 多币种与翻译</span>
+                    支持港币(HKD)/人民币(CNY)一键切换展示；内置AI翻译引擎，可将英文简介、新闻、表格自动翻译为中文。
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">📊 投资组合看板</span>
+                    提供多只股票的同屏涨跌幅对比、成交量分析，通过红绿热力图快速掌握市场情绪。
+                </li>
+            </ul>
+        </section>
+
+        <!-- 3. 操作流程图 -->
+        <section class="card">
+            <h2>3. 系统操作流程图</h2>
+            <div class="mermaid">
+            graph TD
+                Start((开始使用)) --> Sidebar[侧边栏设置]
+                
+                subgraph 股票管理
+                Sidebar --> Search{搜索/添加股票}
+                Search -->|输入中文名| Result[显示搜索结果]
+                Result --> AddBtn[点击 ➕ 添加]
+                Search -->|直接输入代码| Input[输入代码 0700/1810]
+                AddBtn --> AutoSave[自动保存至本地]
+                Input --> AutoSave
+                end
+
+                subgraph 个性化设置
+                Sidebar --> Currency[切换货币 HKD/CNY]
+                Sidebar --> Trans[开启 AI 翻译]
+                Sidebar --> Period[调整 K线周期/粒度]
+                end
+
+                AutoSave --> Analysis[进入主界面分析]
+                
+                subgraph 功能模块 (Tabs)
+                Analysis --> Tab1[🔍 个股深度分析]
+                Analysis --> Tab2[💼 投资组合概览]
+                Analysis --> Tab3[📰 市场动态]
+                Analysis --> Tab4[👥 股东与大户]
+                end
+
+                Tab1 --> Detail1[查看 K线/技术指标]
+                Tab1 --> Detail2[阅读 AI 趋势研报]
+                Tab1 --> Detail3[查看 机构评级/估值]
+
+                Tab2 --> Port1[多股涨跌幅对比]
+                Tab2 --> Port2[实时行情看板]
+
+                Tab3 --> News[查看/翻译 个股新闻]
+
+                Tab4 --> Holder1[机构持仓分析]
+                Tab4 --> Holder2[内部人士交易追踪]
+            </div>
+        </section>
+
+        <!-- 4. 详细使用指南 -->
+        <section class="card">
+            <h2>4. 详细使用指南</h2>
+            
+            <h3>第一步：添加关注股票</h3>
+            <p>在左侧侧边栏的搜索框中输入股票中文名（例如“美团”），点击下方的 ➕ 号即可添加。系统会自动记录你的选择，下次打开无需重复添加。</p>
+
+            <h3>第二步：调整分析设置</h3>
+            <p>你可以根据习惯选择 <strong>HKD</strong> 或 <strong>CNY</strong> 显示价格。如果是短线交易者，可以在“时间粒度”中选择 <strong>15m</strong> 或 <strong>60m</strong>；长线投资者建议使用 <strong>1d</strong> 或 <strong>1wk</strong>。</p>
+
+            <h3>第三步：查看深度分析</h3>
+            <p>在主界面的 <strong>"🔍 个股深度分析"</strong> 标签页，系统会自动为你绘制带有布林带和均线的 K 线图，并生成一份 <strong>AI 智能趋势解析报告</strong>，告诉你当前是“积极看多”还是“谨慎观望”。</p>
+
+            <h3>第四步：监控主力动向</h3>
+            <p>切换到 <strong>"👥 股东与大户"</strong> 标签页，查看是否有机构在大举买入，或者公司高管是否在减持套现。开启翻译功能后，复杂的英文机构名和职位都会变成中文。</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>个人学习 无商业用途 2026</p>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>
